@@ -1,0 +1,43 @@
+import random
+import string
+import time
+
+def generate_prompt(difficulty):
+    if difficulty == "easy":
+        words = random.sample(["developed by Guido van Rossum","Python is a programming language"], k=2)
+        prompt = " ".join(words)
+    elif difficulty == "medium":
+        words = random.sample(["developed by Guido van Rossum","Python is an interpreted programming language"," object-oriented and high-level"], k=3)
+        prompt = " ".join(words)
+        prompt = prompt.capitalize()
+        prompt = prompt + random.choice(string.punctuation)
+    elif difficulty == "hard":
+        prompt = "Python is an interpreted, object-oriented, high-level programming language with dynamic semantics developed by Guido van Rossum."
+        prompt = prompt.capitalize()
+        prompt = prompt.replace(",", ",")
+    return prompt
+
+def typing_speed_test():
+    levels = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
+    print("Typing Speed Test\n")
+    print("Select a level - Easy, Medium, or Hard")
+    level = input().lower()
+    while level not in levels.keys():
+        print("Invalid level. Please select a valid level - Easy, Medium, or Hard")
+        level = input().lower()
+    
+    prompt = generate_prompt(level)
+    print(f"\nType this: {prompt}\n")
+    
+    start_time = time.time()
+    user_input = input().lower()
+    end_time = time.time()
+    total_time = end_time - start_time
+    words_per_minute = len(user_input.split()) / total_time * 60
+    accuracy = sum([1 for i, j in zip(user_input, prompt) if i == j]) / len(prompt) * 100
+    print("\nResults\n")
+    print(f"You typed {len(user_input.split())} words in {total_time:.2f} seconds.")
+    print(f"Your typing speed is {words_per_minute:.2f} words per minute.")
+    print(f"Your typing accuracy is {accuracy:.2f}%.")
+
+typing_speed_test()
