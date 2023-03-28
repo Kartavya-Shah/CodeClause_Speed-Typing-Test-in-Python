@@ -1,5 +1,5 @@
 # CodeClause_Speed-Typing-Test
-This is a simple typing speed test program in Python that allows you to test your typing speed and accuracy. It generates a random prompt text based on the selected level of difficulty - Easy, Medium, or Hard.
+This is a simple typing speed test program in Python that allows you to test your typing speed and accuracy. It generates a random prompt text based on the selected level of difficulty - Easy, Medium, or Hard. 
 
 # How to Run :
 Clone the repository "python code" or download the typing_speed_test.py file.
